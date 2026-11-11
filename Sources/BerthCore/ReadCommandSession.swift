@@ -34,6 +34,9 @@ public final class ReadCommandSession: @unchecked Sendable {
     public func request(_ command: String, timeout: TimeInterval = 60) throws -> Data {
         lock.lock(); defer { lock.unlock() }
         guard !command.contains(where: \.isNewline) else { throw BerthError.message("读取请求格式无效。") }
+        // Scheduled cleanup can be delayed under load. Never reuse an expired
+        // host just because its idle callback has not run yet.
+        if Date().timeIntervalSince(lastUse) >= idleTimeout { stop() }
         lastUse = Date()
         idleWork?.cancel()
         if process?.isRunning != true {
