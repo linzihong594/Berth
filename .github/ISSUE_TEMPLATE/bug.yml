@@ -1,0 +1,23 @@
+name: Bug report / 问题反馈
+description: Report a reproducible problem using redacted or fictional data.
+labels: [bug]
+body:
+  - type: input
+    id: environment
+    attributes:
+      label: Environment / 环境
+      placeholder: macOS version, Apple silicon or Intel, Berth version
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps and expected behavior / 复现步骤与预期
+      description: Explain what you did, what happened, and what you expected.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Redacted evidence / 脱敏信息
+      description: Do not upload raw dumpbtm output, personal paths, passwords, plist backups, or archive journals.

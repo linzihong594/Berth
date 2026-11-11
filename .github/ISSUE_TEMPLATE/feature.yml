@@ -1,0 +1,17 @@
+name: Feature request / 功能建议
+description: Propose a focused improvement to background-activity management.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: User problem / 使用中的问题
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior / 期望行为
+      description: Describe a small solution and any authorization or recovery implications.
+    validations:
+      required: true
